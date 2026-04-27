@@ -1,0 +1,11 @@
+﻿Zbiór,Klasa (AAMI),Pełna nazwa,n,% zbioru,Śr. amplituda,Odch. std,Min,Max
+DS1,N,N – Normalny,42271,92.01,-0.4386,0.4544,-5.12,5.115
+DS1,S,S – Nadkomorowy,729,1.59,-0.3537,0.455,-2.575,2.23
+DS1,V,V – Komorowy,2304,5.01,-0.3762,0.6527,-3.605,2.84
+DS1,F,F – Fuzja,603,1.31,-0.145,0.5337,-1.905,2.835
+DS1,Q,Q – Stymulowany/Nieznany,36,0.08,-0.1773,0.5289,-3.485,2.06
+DS2,N,N – Normalny,40328,92.28,-0.2816,0.4193,-3.395,3.125
+DS2,S,S – Nadkomorowy,1591,3.64,-0.1412,0.2137,-2.755,2.65
+DS2,V,V – Komorowy,1422,3.25,-0.1806,0.5989,-2.76,3.145
+DS2,F,F – Fuzja,360,0.82,-0.259,0.6493,-2.405,3.285
+DS2,Q,Q – Stymulowany/Nieznany,3,0.01,-0.1701,1.0232,-3.255,2.795
