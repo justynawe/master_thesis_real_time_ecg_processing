@@ -105,23 +105,23 @@ class PanTompkinsQRS:
         fig, axes = plt.subplots(5, 1, figsize=(15, 12))
         
         axes[0].plot(time, ecg_signal[start_idx:end_idx], 'b', linewidth=0.8)
-        axes[0].set_ylabel('Amplitude')
-        axes[0].set_title('Original ECG Signal')
+        axes[0].set_ylabel('Amplituda')
+        axes[0].set_title('Surowy sygnał EKG')
         axes[0].grid(True, alpha=0.3)
         
         axes[1].plot(time, filtered[start_idx:end_idx], 'g', linewidth=0.8)
-        axes[1].set_ylabel('Amplitude')
-        axes[1].set_title('Bandpass Filtered (5-15 Hz)')
+        axes[1].set_ylabel('Amplituda')
+        axes[1].set_title('Filtracja pasmowoprzepustowa (5-15 Hz)')
         axes[1].grid(True, alpha=0.3)
         
         axes[2].plot(time, derivative[start_idx:end_idx], 'm', linewidth=0.8)
-        axes[2].set_ylabel('Amplitude')
-        axes[2].set_title('Derivative')
+        axes[2].set_ylabel('Amplituda')
+        axes[2].set_title('Filtr różniczkowy')
         axes[2].grid(True, alpha=0.3)
         
         axes[3].plot(time, squared[start_idx:end_idx], 'c', linewidth=0.8)
-        axes[3].set_ylabel('Amplitude')
-        axes[3].set_title('Squared')
+        axes[3].set_ylabel('Amplituda')
+        axes[3].set_title('Kwadratowanie')
         axes[3].grid(True, alpha=0.3)
         
         axes[4].plot(time, integrated[start_idx:end_idx], 'orange', linewidth=0.8)
@@ -129,9 +129,9 @@ class PanTompkinsQRS:
             if start_idx <= peak < end_idx:
                 axes[4].axvline((peak - start_idx)/self.fs, color='r', linestyle='--', alpha=0.5, linewidth=1)
                 axes[4].plot((peak - start_idx)/self.fs, integrated[peak], 'ro', markersize=8)
-        axes[4].set_ylabel('Amplitude')
-        axes[4].set_title('Moving Window Integration')
-        axes[4].set_xlabel('Time (s)')
+        axes[4].set_ylabel('Amplituda')
+        axes[4].set_title('4.	Całkowanie ruchomym oknem')
+        axes[4].set_xlabel('Czas (s)')
         axes[4].grid(True, alpha=0.3)
         
         plt.tight_layout()
