@@ -72,8 +72,8 @@ def create_lstm_model(input_shape=(360, 2), num_classes=5):
 # Trening
 # ============================================================
 
-def train_model(ds1_path='qrs_classified_DS1.npz',
-                ds2_path='qrs_classified_DS2.npz',
+def train_model(ds1_path='C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\qrs_classified_DS1.npz',
+                ds2_path='C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\qrs_classified_DS2.npz',
                 use_aami=True,
                 epochs=60,
                 batch_size=64,
@@ -223,8 +223,8 @@ def predict_beat(model, window, mean, std, le):
 
 if __name__ == '__main__':
     train_model(
-        ds1_path='qrs_classified_DS1.npz',
-        ds2_path='qrs_classified_DS2.npz',
+        ds1_path='C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\qrs_classified_DS1.npz',
+        ds2_path='C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\qrs_classified_DS2.npz',
         use_aami=True,
         epochs=60,
         batch_size=64,

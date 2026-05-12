@@ -17,7 +17,7 @@ import pandas as pd
 from scipy import signal as scipy_signal
 import os
 
-# ── Styl wykresów ──────────────────────────────────────────────────────────────
+# Styl wykresów 
 plt.rcParams.update({
     'font.family': 'DejaVu Sans',
     'axes.titlesize': 13,
@@ -29,9 +29,9 @@ plt.rcParams.update({
 OUTPUT_DIR = 'C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\eda_plots'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-FS = 360   # Hz – częstotliwość próbkowania MIT-BIH
+FS = 360   # częstotliwość próbkowania MIT-BIH
 
-# ── Mapowanie AAMI ─────────────────────────────────────────────────────────────
+# Mapowanie AAMI
 AAMI_MAPPING = {
     'Normal':             'N',
     'LBBB':               'N',
@@ -63,7 +63,7 @@ CLASS_COLORS = {
     'Q': '#4CAF50',
 }
 
-# ── Ładowanie danych ───────────────────────────────────────────────────────────
+# Ładowanie danych
 
 def load_npz(path):
     d = np.load(path)
