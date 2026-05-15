@@ -104,33 +104,33 @@ class PanTompkinsQRS:
         
         fig, axes = plt.subplots(5, 1, figsize=(15, 12))
         
-        axes[0].plot(time, ecg_signal[start_idx:end_idx], 'b', linewidth=0.8)
+        axes[0].plot(time, ecg_signal[start_idx:end_idx], 'darkblue', linewidth=0.8)
         axes[0].set_ylabel('Amplituda')
         axes[0].set_title('Surowy sygnał EKG')
         axes[0].grid(True, alpha=0.3)
         
-        axes[1].plot(time, filtered[start_idx:end_idx], 'g', linewidth=0.8)
+        axes[1].plot(time, filtered[start_idx:end_idx], 'purple', linewidth=0.8)
         axes[1].set_ylabel('Amplituda')
         axes[1].set_title('Filtracja pasmowoprzepustowa (5-15 Hz)')
         axes[1].grid(True, alpha=0.3)
         
-        axes[2].plot(time, derivative[start_idx:end_idx], 'm', linewidth=0.8)
+        axes[2].plot(time, derivative[start_idx:end_idx], 'mediumpurple', linewidth=0.8)
         axes[2].set_ylabel('Amplituda')
-        axes[2].set_title('Filtr różniczkowy')
+        axes[2].set_title('Filtracja różniczkowa')
         axes[2].grid(True, alpha=0.3)
         
-        axes[3].plot(time, squared[start_idx:end_idx], 'c', linewidth=0.8)
+        axes[3].plot(time, squared[start_idx:end_idx], 'maroon', linewidth=0.8)
         axes[3].set_ylabel('Amplituda')
         axes[3].set_title('Kwadratowanie')
         axes[3].grid(True, alpha=0.3)
         
-        axes[4].plot(time, integrated[start_idx:end_idx], 'orange', linewidth=0.8)
+        axes[4].plot(time, integrated[start_idx:end_idx], 'darkorange', linewidth=0.8)
         for peak in qrs_peaks[:num_qrs]:
             if start_idx <= peak < end_idx:
                 axes[4].axvline((peak - start_idx)/self.fs, color='r', linestyle='--', alpha=0.5, linewidth=1)
                 axes[4].plot((peak - start_idx)/self.fs, integrated[peak], 'ro', markersize=8)
         axes[4].set_ylabel('Amplituda')
-        axes[4].set_title('4.	Całkowanie ruchomym oknem')
+        axes[4].set_title('Całkowanie ruchomym oknem')
         axes[4].set_xlabel('Czas (s)')
         axes[4].grid(True, alpha=0.3)
         
@@ -499,7 +499,7 @@ class QRSBasedDataProcessor:
         print(f"Classes: {self.label_encoder.classes_}")
         
         return windows, freq_windows, encoded_labels
-
+"""
 def plot_qrs_samples_from_npz(npz_file='qrs_classified_dataset.npz', num_samples=5, save_path='qrs_samples_from_dataset.png'):
     
     data = np.load(npz_file)
@@ -530,15 +530,15 @@ def plot_qrs_samples_from_npz(npz_file='qrs_classified_dataset.npz', num_samples
     plt.savefig(save_path, dpi=150, bbox_inches='tight')
     plt.close()
     print(f"QRS samples from dataset plot saved to {save_path}")
-
+"""
 def main():
     print("=== QRS-Based ECG Classification Dataset Creator ===")
     print("Podział inter-patient zgodny z AAMI EC57 (de Chazal et al.)")
 
     processor = QRSBasedDataProcessor()
 
-    print("\n=== Wizualizacja kroków filtracji (rekord 101 z DS1) ===")
-    record = wfdb.rdrecord(os.path.join(processor.data_dir, '101'))
+    print("\n=== Wizualizacja kroków filtracji (rekord 112 z DS1) ===")
+    record = wfdb.rdrecord(os.path.join(processor.data_dir, '112'))
     ecg_signal = record.p_signal[:, 0]
     processor.qrs_detector.plot_filtration_steps(
         ecg_signal, num_qrs=5, save_path='pan_tompkins_filtration_steps.png')
@@ -561,9 +561,9 @@ def main():
                                filename_freq=freq_path)
         print(f"Zapisano: {time_path}, {freq_path}")
 
-    print("\n=== Przykładowe okna QRS z DS1 ===")
-    plot_qrs_samples_from_npz('qrs_classified_DS1.npz', num_samples=5,
-                               save_path='qrs_samples_from_dataset.png')
+   # print("\n=== Przykładowe okna QRS z DS1 ===")
+    #plot_qrs_samples_from_npz('qrs_classified_DS1.npz', num_samples=5,
+                               #save_path='qrs_samples_from_dataset.png')
 
 if __name__ == "__main__":
     main()

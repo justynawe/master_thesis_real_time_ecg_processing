@@ -26,7 +26,7 @@ plt.rcParams.update({
     'ytick.labelsize': 10,
     'legend.fontsize': 10,
 })
-OUTPUT_DIR = 'C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\eda_plots'
+OUTPUT_DIR = 'C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\eda\\eda_plots'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 FS = 360   # częstotliwość próbkowania MIT-BIH

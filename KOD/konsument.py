@@ -62,10 +62,6 @@ MIN_PEAK_DISTANCE = int(0.3 * FS)  # min. odstęp między pikami (~300 ms)
 CLASS_MAP = ['F', 'N', 'Q', 'S', 'V']
 
 # --- INICJALIZACJA MODELU ---
-# Budujemy architekturę z kodu (omijamy deserializację konfiguracji,
-# która może się nie udać przy różnych wersjach Keras), a następnie
-# ładujemy tylko wagi. Po przetrenowaniu na nowych danych można
-# wrócić do tf.keras.models.load_model().
 model = create_ecg_model(input_shape=(WINDOW_SIZE, 2), num_classes=5)
 model(np.zeros((1, WINDOW_SIZE, 2), dtype=np.float32))  # build grafu
 model.load_weights('models/ecg_model.keras')
@@ -89,7 +85,7 @@ ax.set_ylim(-2, 2)
 ax.set_xlim(0, VIEW_WIDTH)
 ax.set_xlabel("Próbki")
 ax.set_ylabel("Amplituda (mV)")
-ax.set_title("Monitor EKG Czasu Rzeczywistego – Klasyfikacja AI")
+ax.set_title("EKG w czasie rzeczywistym – klasyfikacja zespołów QRS")
 ax.legend(loc='upper right')
 
 # --- BUFORY ---
