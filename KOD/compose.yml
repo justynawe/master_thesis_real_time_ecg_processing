@@ -7,10 +7,11 @@ services:
     ports:
       - "2181:2181"
     healthcheck:
-      test: echo ruok | nc localhost 2181 | grep imok
+      test: ["CMD-SHELL", "nc -z localhost 2181"]
       interval: 5s
       timeout: 5s
       retries: 10
+      start_period: 10s
 
   kafka:
     image: confluentinc/cp-kafka:7.6.0

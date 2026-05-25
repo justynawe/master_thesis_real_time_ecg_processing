@@ -74,8 +74,8 @@ def load_npz(path):
     return X[mask], y_aami[mask], y_raw[mask]
 
 print("Wczytywanie danych...")
-X_ds1, y_ds1, y_raw_ds1 = load_npz('C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\qrs_classified_DS1.npz')
-X_ds2, y_ds2, y_raw_ds2 = load_npz('C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\qrs_classified_DS2.npz')
+X_ds1, y_ds1, y_raw_ds1 = load_npz('C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\podejście bez RR\\qrs_classified_DS1.npz')
+X_ds2, y_ds2, y_raw_ds2 = load_npz('C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\podejście bez RR\\qrs_classified_DS2.npz')
 
 X_all   = np.concatenate([X_ds1, X_ds2], axis=0)
 y_all   = np.concatenate([y_ds1, y_ds2], axis=0)

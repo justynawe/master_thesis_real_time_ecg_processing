@@ -29,9 +29,9 @@ AAMI_MAPPING = {
 CLASS_NAMES = ['N', 'S', 'V', 'F', 'Q']
 
 
-# ============================================================
+
 # Architecture: 1D-CNN with residual blocks
-# ============================================================
+
 
 def residual_block(x, filters, kernel_size=5, dilation_rate=1):
     """
@@ -145,7 +145,7 @@ def load_dataset(npz_path='qrs_classified_dataset.npz', use_aami=True):
     y_strings = data['y_strings']
 
     if use_aami:
-        y_mapped = np.array([AAMI_MAPPING.get(lbl, 'Q') for lbl in y_strings])
+        y_mapped = np.array([AAMI_MAPPING.get(lbl, None) for lbl in y_strings])
         valid_mask = np.isin(y_mapped, CLASS_NAMES)
         X = X[valid_mask]
         y_mapped = y_mapped[valid_mask]
@@ -179,12 +179,12 @@ def normalize_with_stats(X, mean, std):
     return (X - mean) / (std + 1e-8)
 
 
-# ============================================================
-# Training
-# ============================================================
 
-def train_model(ds1_path='qrs_classified_DS1.npz',
-                ds2_path='qrs_classified_DS2.npz',
+# Training
+
+
+def train_model(ds1_path='C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\qrs_classified_DS1.npz',
+                ds2_path='C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\qrs_classified_DS2.npz',
                 use_aami=True,
                 epochs=60,
                 batch_size=64,
@@ -276,7 +276,7 @@ def evaluate_model(model, X_test, y_test, class_names, history=None):
     plt.figure(figsize=(7, 6))
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
                 xticklabels=class_names, yticklabels=class_names)
-    plt.title('Confusion Matrix — Test Set')
+    plt.title('Macierz pomyłek zbioru testowego (model RestNet1D)')
     plt.ylabel('True')
     plt.xlabel('Predicted')
     plt.tight_layout()
@@ -289,14 +289,14 @@ def evaluate_model(model, X_test, y_test, class_names, history=None):
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
         ax1.plot(history.history['accuracy'],     label='Train')
         ax1.plot(history.history['val_accuracy'], label='Validation')
-        ax1.set_title('Accuracy')
+        ax1.set_title('Dokładność (model RestNet1D)')
         ax1.set_xlabel('Epoch')
         ax1.legend()
         ax1.grid(True, alpha=0.3)
 
         ax2.plot(history.history['loss'],     label='Train')
         ax2.plot(history.history['val_loss'], label='Validation')
-        ax2.set_title('Loss')
+        ax2.set_title('Strata (model RestNet1D)')
         ax2.set_xlabel('Epoch')
         ax2.legend()
         ax2.grid(True, alpha=0.3)
@@ -335,8 +335,8 @@ def predict_beat(model, window, mean, std, le):
 
 if __name__ == '__main__':
     model, history, le, mean, std = train_model(
-        ds1_path='qrs_classified_DS1.npz',
-        ds2_path='qrs_classified_DS2.npz',
+        ds1_path='C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\qrs_classified_DS1.npz',
+        ds2_path='C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\qrs_classified_DS2.npz',
         use_aami=True,
         epochs=60,
         batch_size=64,

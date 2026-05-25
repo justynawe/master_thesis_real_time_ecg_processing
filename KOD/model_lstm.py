@@ -11,9 +11,9 @@ from model_ml import (
 )
 
 
-# ============================================================
+
 # Architecture: CNN stem + Bidirectional LSTM
-# ============================================================
+
 
 def create_lstm_model(input_shape=(360, 2), num_classes=5):
     """
@@ -68,9 +68,8 @@ def create_lstm_model(input_shape=(360, 2), num_classes=5):
     return model
 
 
-# ============================================================
 # Trening
-# ============================================================
+
 
 def train_model(ds1_path='C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\qrs_classified_DS1.npz',
                 ds2_path='C:\\Users\\Justyna\\Documents\\SGH_PRACA_MAGISTERSKA\\KOD\\qrs_classified_DS2.npz',
@@ -165,9 +164,9 @@ def _evaluate_and_save(model, X_test, y_test, class_names, history=None):
 
     cm = confusion_matrix(y_test, y_pred)
     plt.figure(figsize=(7, 6))
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Oranges',
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
                 xticklabels=class_names, yticklabels=class_names)
-    plt.title('Confusion Matrix — BiLSTM — Test Set')
+    plt.title('Macierz pomyłek zbioru testowego (model BiLSTM)')
     plt.ylabel('True')
     plt.xlabel('Predicted')
     plt.tight_layout()
@@ -179,14 +178,14 @@ def _evaluate_and_save(model, X_test, y_test, class_names, history=None):
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
         ax1.plot(history.history['accuracy'],     label='Train')
         ax1.plot(history.history['val_accuracy'], label='Validation')
-        ax1.set_title('Accuracy — BiLSTM')
+        ax1.set_title('Dokładność (model BiLSTM)')
         ax1.set_xlabel('Epoch')
         ax1.legend()
         ax1.grid(True, alpha=0.3)
 
         ax2.plot(history.history['loss'],     label='Train')
         ax2.plot(history.history['val_loss'], label='Validation')
-        ax2.set_title('Loss — BiLSTM')
+        ax2.set_title('Strata (model BiLSTM)')
         ax2.set_xlabel('Epoch')
         ax2.legend()
         ax2.grid(True, alpha=0.3)
